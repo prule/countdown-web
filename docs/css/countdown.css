@@ -1,0 +1,163 @@
+/* Original Gradient Style */
+.countdown-gradient {
+  background: linear-gradient(to right, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  line-height: 1;
+}
+
+
+.countdown {
+  /*font-family: "Orbitron", sans-serif;*/
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-background-clip: text;
+  background-clip: text;
+  /*color: transparent;*/
+  /* Remove fixed font size to allow JS to control it */
+  /*white-space: nowrap; !* Prevent text from wrapping *!*/
+  display: inline-block;
+  line-height: 1; /* Important for accurate sizing */
+}
+.countdown-wrapper {
+ margin: 1em;
+}
+.countdown-title {
+  font-size: 1.5em;
+  font-family: "Orbitron", sans-serif;
+  color: #999;
+}
+
+.countdown-suffix {
+  font-size: 1.5em;
+  font-family: "Orbitron", sans-serif;
+  color: #999;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../img/clock.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  /* Center text in the window */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* If you need to center a specific container instead of all body content */
+.countdown-container {
+  display: flex;
+  /*flex-direction: column;*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+
+/*!* For more precise control over font sizing *!*/
+/*@media screen and (max-width: 768px) {*/
+/*  .orbitron-countdown {*/
+/*    font-size: 8vw;*/
+/*  }*/
+/*}*/
+
+/*@media screen and (max-width: 480px) {*/
+/*  .orbitron-countdown {*/
+/*    font-size: 6vw;*/
+/*  }*/
+/*}*/
+
+
+.countdown-panel {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2em 3em;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+
+}
+
+.button-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.floating-button {
+  /*position: fixed;*/
+  /*top: 20px;*/
+  /*right: 20px;*/
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  /*width: 60px;*/
+  /*height: 60px;*/
+  font-size: 24px;
+  cursor: pointer;
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.floating-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.floating-button span {
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Optional tooltip */
+.floating-button .tooltip {
+  position: absolute;
+  right: 70px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.floating-button:hover .tooltip {
+  opacity: 1;
+}
+
+.floating-button.text-button {
+  border-radius: 30px;
+  width: auto;
+  padding: 0 20px;
+}
+
+.floating-button.text-button span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+

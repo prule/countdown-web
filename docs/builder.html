@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVP6W5ECY2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YVP6W5ECY2');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Countdown - Builder</title>
+  <link rel="stylesheet" href="css/builder.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Build your own count down</span>
+    <div id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://docs.google.com/forms/d/e/1FAIpQLSf20wxIfCW3bJjYAJKjJqKY4Q3iLGA3we5zHG2nyoXLZJaSXg/viewform?usp=preview" target="_blank">Feedback</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="mb-3">
+        <label for="date" class="form-label">Countdown to</label>
+        <input type="datetime-local" class="form-control" id="date" placeholder="Target date to count down to" onchange="updatePreview()">
+      </div>
+      <div class="mb-3">
+        <label for="timezone-offset" class="form-label">Timezone offset</label>
+        <input type="text" readonly class="form-control" id="timezone-offset" placeholder="Select an offset from the list below" onchange="updatePreview()" value="Viewers local timezone">
+      </div>
+
+      <p>Use "local viewers time" if you want the time to be relative to the viewers timezone.</p>
+      <p>To have everyone count down to the same instant in time, select the desired timezone from the list below.</p>
+
+      <div class="dropdown-menu d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="dark">
+        <input id="timezone-filter" onchange="doFilter()" type="text" class="form-control bg-dark" autocomplete="false" placeholder="Type to filter timezone list...">
+        <ul id="timezone-list" class="list-group">
+
+        </ul>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Title" onchange="updatePreview()">
+      </div>
+      <div class="mb-3">
+        <label for="font" class="form-label">Font</label>
+        <select id="font" class="form-select" aria-label="Font" onchange="updatePreview()">
+          <option value="lcd14">LCD14</option>
+          <option value="vt323">VT323</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="effect" class="form-label">Effect</label>
+        <select id="effect" class="form-select" aria-label="Effect" onchange="updatePreview()">
+          <option value="gradient">Gradient</option>
+          <option value="neon-pulse">Neon Pulse</option>
+          <option value="matrix">Matrix</option>
+          <option value="fire">Fire</option>
+          <option value="hologram">Hologram</option>
+        </select>
+      </div>
+
+
+
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="hidden" class="form-control" id="image" placeholder="Title" onchange="updatePreview()">
+
+        <div class="imageSelector">
+          <img src="img/clock.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Clock">
+          <img src="img/binary.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Binary">
+          <img src="img/matrix.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Matrix">
+          <img src="img/astronaut-4.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Astronaut">
+          <img src="img/birthday-party.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Birthday">
+          <img src="img/rocket-launch.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Rocket">
+          <img src="img/christmas-snowy.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Christmas Snowy">
+          <img src="img/christmas-indoor.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Christmas Indoors">
+          <img src="img/girls-night.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Girls Night">
+          <img src="img/gridiron.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Gridiron">
+          <img src="img/holiday-1.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Holiday">
+          <img src="img/racecar.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Race car">
+          <img src="img/usflag.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="US Flag">
+          <img src="img/snowman.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Snowman">
+          <img src="img/paint.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Paint">
+          <img src="img/flowers.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Flowers">
+          <img src="img/fighter-jet.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="Fighter Jet">
+          <img src="img/f1_race_car_front.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="F1 Race car">
+          <img src="img/gt3-race-car.jpg" onclick="setImage(this.src)" class="img-thumbnail" alt="GT3 Race car">
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-outline-primary" onclick="openCountdown();return false;">Open in new tab</button>
+
+    </div>
+
+
+    <div class="col-sm-6 " >
+      <div class="img-thumbnail mt-3 preview-container" style="height: 60vw">
+      <object type="text/html" data="countdown.html?preview=true" id="preview"
+              style="width:100%; height:100%; ">
+      </object>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script src="js/builder.js"></script>
+<script src="js/timezones.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

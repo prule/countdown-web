@@ -1,0 +1,199 @@
+/* Digital Clock Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=DS-Digital:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Digital-7&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Segment7Standard&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+/* Note: Some digital clock fonts like DS-Digital, Digital-7, and Segment7Standard
+   may require manual inclusion as they're not always available in Google Fonts.
+   You may need to download and include them as local web fonts using @font-face */
+
+/* Digital Clock Font Classes */
+
+/* True Digital Clock Fonts */
+.font-ds-digital {
+  font-family: 'DS-Digital', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-digital-7 {
+  font-family: 'Digital-7', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-segment7 {
+  font-family: 'Segment7Standard', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Modern Digital-Inspired Fonts */
+.font-chakra-petch {
+  font-family: 'Chakra Petch', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-goldman {
+  font-family: 'Goldman', cursive;
+  letter-spacing: 0.02em;
+}
+
+.font-silkscreen {
+  font-family: 'Silkscreen', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-chivo-mono {
+  font-family: 'Chivo Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-syne-mono {
+  font-family: 'Syne Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-aldrich {
+  font-family: 'Aldrich', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Custom @font-face declarations for specialized digital fonts */
+@font-face {
+  font-family: 'DS-Digital';
+  src: url('path-to-your-font-file/DS-Digital.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Digital-7';
+  src: url('path-to-your-font-file/Digital-7.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Segment7Standard';
+  src: url('path-to-your-font-file/Segment7Standard.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LCD';
+  src: url('../fonts/LCD14.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Digital Clock Styling Examples */
+
+.countdown-lcd14 {
+  font-family: 'LCD', monospace;
+  color: #1dff1d; /* Bright green */
+  background-color: #000;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgba(29, 255, 29, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Classic LCD Digital Clock */
+.countdown-lcd {
+  font-family: 'DS-Digital', monospace;
+  color: #1dff1d; /* Bright green */
+  background-color: #000;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgba(29, 255, 29, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Red LED Digital Clock */
+.countdown-led-red {
+  font-family: 'Digital-7', monospace;
+  color: #ff0000; /* Red */
+  background-color: #100;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Blue LED Digital Clock */
+.countdown-led-blue {
+  font-family: 'Segment7Standard', monospace;
+  color: #00bfff; /* Deep Sky Blue */
+  background-color: #001;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgba(0, 191, 255, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Modern LCD Style with Chakra Petch */
+.countdown-modern-lcd {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 300;
+  color: #20c2fc; /* Light blue */
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  border: 1px solid #20c2fc;
+  box-shadow:
+    0 0 5px rgba(32, 194, 252, 0.5),
+    inset 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 3px rgba(32, 194, 252, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Pixel Digital Clock */
+.countdown-pixel {
+  font-family: 'Silkscreen', monospace;
+  color: #ffffff;
+  background-color: #000;
+  padding: 0.25em 0.5em;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+  border: 2px solid #333;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* CSS for creating a segmented display fallback if custom fonts aren't available */
+.countdown-segments {
+  display: inline-flex;
+  gap: 4px;
+  background-color: #000;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.digit {
+  width: 0.6em;
+  aspect-ratio: 1/2;
+  position: relative;
+  display: inline-block;
+}
+
+.segment {
+  position: absolute;
+  background-color: #333; /* inactive segment */
+}
+
+.segment.active {
+  background-color: #ff0000; /* active segment */
+  box-shadow: 0 0 5px #ff0000;
+}

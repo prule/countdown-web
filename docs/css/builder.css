@@ -1,0 +1,34 @@
+body {
+  margin: 1em;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  height: 100vh;
+}
+
+.imageSelector {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: block;
+  white-space: nowrap;
+}
+
+.imageSelector img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+#timezone-list {
+  cursor: pointer;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+#timezone-list li:hover {
+  background-color: #020202;
+}

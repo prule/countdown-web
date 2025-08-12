@@ -1,0 +1,326 @@
+/* Monospaced Font Imports */
+/*@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=B612+Mono:wght@400;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');*/
+
+
+@font-face {
+  font-family: 'LCD';
+  src: url('../fonts/LCD14.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.countdown-font-lcd14 {
+  font-family: 'LCD', monospace;
+  color: #1dff1d; /* Bright green */
+  background-color: #000;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgba(29, 255, 29, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+.countdown-font-vt323 {
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.02em;
+}
+
+
+/* Monospaced Font Classes */
+
+/* Tech/Digital Monospaced Fonts */
+.font-share-tech-mono {
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+
+.font-major-mono {
+  font-family: 'Major Mono Display', monospace;
+  letter-spacing: 0.05em;
+  text-transform: lowercase; /* This font works best with lowercase */
+}
+
+.font-space-mono {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-fira-mono {
+  font-family: 'Fira Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+.font-roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-ibm-plex-mono {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+.font-jetbrains-mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+.font-pt-mono {
+  font-family: 'PT Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+.font-b612-mono {
+  font-family: 'B612 Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-cutive-mono {
+  font-family: 'Cutive Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+.font-nova-mono {
+  font-family: 'Nova Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-courier-prime {
+  font-family: 'Courier Prime', monospace;
+  letter-spacing: 0.01em;
+}
+
+.font-oxygen-mono {
+  font-family: 'Oxygen Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+/* Style Examples with Monospaced Fonts */
+
+/* Neon Style with Nova Mono */
+.countdown-neon.font-nova-mono {
+  font-weight: 400;
+  /* Nova Mono has interesting geometry that works well with neon effects */
+}
+
+/* Matrix Style with JetBrains Mono */
+.countdown-matrix.font-jetbrains-mono {
+  font-weight: 400;
+  /* JetBrains Mono has excellent readability while maintaining a tech feel */
+}
+
+/* Retro Digital with Space Mono */
+.countdown-retro.font-space-mono {
+  font-weight: 400;
+  /* Space Mono has a distinct retro-futuristic feel */
+}
+
+/* Sci-Fi Hologram with IBM Plex Mono */
+.countdown-hologram.font-ibm-plex-mono {
+  font-weight: 300;
+  /* IBM Plex Mono's clean lines complement holographic effects */
+}
+
+/* Font Weight Utilities */
+.font-light {
+  font-weight: 300;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+
+/* Neon Style */
+.countdown-neon {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #0ff,
+    0 0 20px #0ff,
+    0 0 25px #0ff,
+    0 0 30px #0ff,
+    0 0 35px #0ff;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Retro Digital Display Style */
+.countdown-retro {
+  font-family: monospace;
+  color: #32ff7e;
+  background-color: #121212;
+  text-shadow: 0 0 2px rgba(50, 255, 126, 0.7);
+  border: 1px solid #32ff7e;
+  border-radius: 4px;
+  padding: 0.25em 0.5em;
+  box-shadow: 0 0 5px rgba(50, 255, 126, 0.5);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Sci-Fi Hologram Style */
+.countdown-hologram {
+  color: rgba(157, 236, 249, 0.9);
+  background: linear-gradient(180deg, rgba(157, 236, 249, 0.3) 0%, rgba(157, 236, 249, 0) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow:
+    0 0 2px #9decf9,
+    0 0 10px rgba(157, 236, 249, 0.8);
+  border: 1px solid rgba(157, 236, 249, 0.3);
+  border-radius: 2px;
+  padding: 0.25em 0.5em;
+  box-shadow:
+    inset 0 0 10px rgba(157, 236, 249, 0.5),
+    0 0 15px rgba(157, 236, 249, 0.5);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Fire Style */
+.countdown-fire {
+  background: linear-gradient(0deg, #ff3300, #ff8800, #ffdd00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 5px rgba(255, 51, 0, 0.5),
+    0 0 10px rgba(255, 136, 0, 0.3);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Matrix Style */
+.countdown-matrix {
+  color: #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #00ff41;
+  padding: 0.25em 0.5em;
+  font-family: monospace;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Animated Neon Pulse */
+@keyframes neonPulse {
+  0% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #ff00de,
+      0 0 20px #ff00de,
+      0 0 25px #ff00de;
+  }
+  50% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #ff00de,
+      0 0 20px #ff00de,
+      0 0 25px #ff00de,
+      0 0 30px #ff00de,
+      0 0 35px #ff00de;
+  }
+  100% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #ff00de,
+      0 0 20px #ff00de,
+      0 0 25px #ff00de;
+  }
+}
+
+.countdown-neon-pulse {
+  color: #ffffff;
+  animation: neonPulse 1.5s infinite alternate;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Glowing Edge Style */
+.countdown-glowing-edge {
+  color: #fff;
+  background-color: #000;
+  padding: 0.25em 0.5em;
+  border-radius: 8px;
+  box-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #0073e6,
+    0 0 20px #0073e6;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  line-height: 1;
+}
+
+
+.vt323-regular {
+  font-family: "VT323", monospace;
+  /*font-weight: 400;*/
+  /*font-style: normal;*/
+}
+
+.silkscreen-regular {
+  font-family: "Silkscreen", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.aldrich-regular {
+  font-family: "Aldrich", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.goldman-regular {
+  font-family: "Goldman", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.goldman-bold {
+  font-family: "Goldman", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+countdown-gradient-1 {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, #00ffff, #ff00ff);
+}
+
+
+
