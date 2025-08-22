@@ -2,12 +2,14 @@
 
 This website lets you create beautiful countdown clocks.
 
-It consists of:
+It consists of separate pages:
 
 - a landing page describing the purpose and functionality of the site
 - a countdown page which renders a beautiful countdown using query parameters to convey the settings
 - a builder page which lets a user configure a countdown
 - a feedback page which links to a google form
+
+These are separate pages to minimise the download and maximise the performance - especially when displaying just the countdown - this needs to be very streamlined.
 
 On the countdown and builder page is a share button which copies the URL to the clipboard and shows the user a message with instructions to paste into their favourite social media channels.
 
@@ -56,3 +58,6 @@ Font effects include
 - Fire
 
 To choose an image, a dialog opens which allows the user to browse, search, filter images from unsplash. The user can find an image they like and choose it to update the preview of the countdown.
+
+The site uses Boostrap CSS.
+

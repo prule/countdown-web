@@ -91,13 +91,17 @@ body {
 
 .button-menu {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 1em;
   position: fixed;
   top: 0;
   right: 0;
+  left: 0;
+  padding: 0 1.5em;
+  box-sizing: border-box;
 }
+
 
 .floating-button {
   /*position: fixed;*/
@@ -160,4 +164,7 @@ body {
 }
 
 
-
+#unsplash-credit {
+  margin-right: auto;
+  /*display: none;*/
+}

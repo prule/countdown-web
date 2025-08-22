@@ -2,6 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const targetDate = urlParams.get('date') || '1999-12-31T23:59:59';
 const title = urlParams.get('title') || 'Countdown';
 const image = urlParams.get('image') || 'clock';
+const unsplash = urlParams.get('unsplash');
 const font = urlParams.get('font') || 'lcd14';
 const effect = urlParams.get('effect') || 'gradient';
 
@@ -153,7 +154,9 @@ function initCountdownFromQuery() {
   // set document title
   document.title = title;
 
-  if (image) {
+  if (unsplash) {
+    document.body.style.backgroundImage = `url(https://images.unsplash.com/${unsplash})`;
+  } else if (image) {
     document.body.style.backgroundImage = `url(./img/${image}.jpg)`;
   }
   // Start the countdown
