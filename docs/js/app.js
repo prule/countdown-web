@@ -91,7 +91,7 @@ function calculateTimeRemaining(targetDate) {
  * Formats the time remaining as a string (HH:MM:SS)
  * @param {Object} timeRemaining - Object containing time components
  * @param {boolean} includeDays - Whether to include days in the output
- * @return {string} Formatted time string
+ * @return {Object} Formatted time string
  */
 function formatTimeRemaining(timeRemaining, includeDays = false) {
   const { days, hours, minutes, seconds } = timeRemaining;
@@ -99,12 +99,26 @@ function formatTimeRemaining(timeRemaining, includeDays = false) {
   // Pad numbers with leading zeros
   const pad = (num) => num.toString().padStart(2, '0');
 
+  // If we've reached the target date
+  if (timeRemaining.totalSeconds <= 0) {
+    return {
+      days: '',
+      time: '00:00:00'
+    }
+  }
+
   if (includeDays && days > 0) {
-    return `${days} days ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    return {
+      days: `${days} days`,
+      time: `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+    }
   } else {
     // Convert days to hours if not including days separately
     const totalHours = includeDays ? hours : days * 24 + hours;
-    return `${pad(totalHours)}:${pad(minutes)}:${pad(seconds)}`;
+    return {
+      days: '',
+      time: `${pad(totalHours)}:${pad(minutes)}:${pad(seconds)}`
+    }
   }
 }
 
@@ -124,15 +138,8 @@ function updateCountdown(targetDate, font, elementId = 'countdown') {
   const formattedTime = formatTimeRemaining(timeRemaining, true);
 
   // Update the element
-  countdownElement.textContent = formattedTime;
-
-  // If we've reached the target date
-  if (timeRemaining.totalSeconds <= 0) {
-    countdownElement.textContent = '00:00:00';
-    // Optional: trigger any actions that should happen when countdown completes
-    // onCountdownComplete();
-    return;
-  }
+  countdownElement.getElementsByClassName('days')[0].textContent = formattedTime.days;
+  countdownElement.getElementsByClassName('time')[0].textContent = formattedTime.time;
 
   // Continue updating
   setTimeout(() => updateCountdown(targetDate, font, elementId), 1000);
@@ -166,15 +173,7 @@ function initCountdownFromQuery() {
   countdownTitleElement.textContent = title;
 
   const countdownSuffixElement = document.getElementById("countdown-suffix");
-  countdownSuffixElement.textContent = targetDate
-  ;
-
-
-
-  // Optional: Call the font resize function if you're using dynamic font sizing
-  // if (typeof resizeText === 'function') {
-  //   resizeText();
-  // }
+  countdownSuffixElement.textContent = targetDate;
 }
 
 // Initialize the countdown when the DOM is loaded
