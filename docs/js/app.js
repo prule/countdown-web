@@ -6,45 +6,6 @@ const unsplash = urlParams.get('unsplash');
 const font = urlParams.get('font') || 'lcd14';
 const effect = urlParams.get('effect') || 'gradient';
 
-
-// Function to resize text to fit container
-function resizeText() {
-  const container = document.querySelector('.countdown-container');
-  const text = document.getElementById('countdown');
-
-  if (!container || !text) return;
-
-  // Reset font size to get the original width
-  text.style.fontSize = '100px';
-
-  // Get container dimensions
-  const containerWidth = container.clientWidth;
-  const containerHeight = container.clientHeight;
-
-  // Calculate the ratio of container width to text width
-  const widthRatio = containerWidth / text.offsetWidth;
-
-  // Calculate the ratio of container height to text height
-  const heightRatio = containerHeight / text.offsetHeight;
-
-  // Use the smaller ratio to ensure text fits both width and height
-  const ratio = Math.min(widthRatio, heightRatio);
-
-  // Apply the new font size
-  const newFontSize = parseFloat(getComputedStyle(text).fontSize) * ratio * 0.9; // 0.9 to add some margin
-  text.style.fontSize = `${newFontSize}px`;
-
-}
-
-// Call the resize function when the page loads
-window.addEventListener('load', resizeText);
-
-// Call the resize function when the window is resized
-window.addEventListener('resize', resizeText);
-
-// If your countdown text changes dynamically, call resizeText() after updating the text
-
-
 /**
  * Calculates the time remaining until a target date
  * @param {string|Date} targetDate - The target date as a Date object or ISO string
@@ -194,5 +155,3 @@ const btn = document.getElementById('share-button');
 btn.addEventListener("click", async () => {
   window.open("./share.html?link=" + encodeURIComponent(window.location.href), '_blank');
 });
-
-

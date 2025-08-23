@@ -2,78 +2,76 @@
 <html class="no-js" lang="">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVP6W5ECY2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVP6W5ECY2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-YVP6W5ECY2');
+    </script>
 
-    gtag('config', 'G-YVP6W5ECY2');
-  </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Countdown To - Create Custom Countdown Timers</title>
+    <meta name="description" content="Create and share custom countdown timers for any event or deadline. Easy to use and mobile-friendly.">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Countdown To - Create Custom Countdown Timers</title>
-  <meta name="description" content="Create and share custom countdown timers for any event or deadline. Easy to use and mobile-friendly.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/countdown.css">
+    <link rel="stylesheet" href="css/fonts.css">
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/countdown.css">
-  <link rel="stylesheet" href="css/fonts.css">
+    <meta property="og:title" content="The Countdown To">
+    <meta property="og:description" content="Build your own countdown clock">
+    <meta property="og:url" content="https://www.mycountdownto.com/">
+    <meta property="og:image" content="/img/clock.jpg">
+    <meta property="og:site_name" content="The Countdown To">
 
-  <meta property="og:title" content="The Countdown To">
-  <meta property="og:description" content="Build your own countdown clock">
-  <meta property="og:url" content="https://www.mycountdownto.com/">
-  <meta property="og:image" content="public/img/clock.jpg">
-  <meta property="og:site_name" content="The Countdown To">
+    <meta name="twitter:title" content="The Countdown To">
+    <meta name="twitter:description" content="Build your own countdown clock">
+    <meta name="twitter:image" content="/img/clock.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:title" content="The Countdown To">
-  <meta name="twitter:description" content="Build your own countdown clock">
-  <meta name="twitter:image" content="img/clock.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="favicon.ico">
 
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
 
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Goldman:wght@400;700&family=Orbitron:wght@900&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Poppins:wght@200;400;700&family=Goldman:wght@400;700&family=Orbitron:wght@900&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 
-
 <div id="button-menu" class="button-menu">
 
-  <a href="https://unsplash.com" target="_blank" class="floating-button text-button left" aria-label="Unsplash" id="unsplash-credit">
-    <span>Image by Unsplash</span>
-  </a>
+    <a href="https://unsplash.com" target="_blank" class="attractive-button" aria-label="Unsplash" id="unsplash-credit">
+        Image by Unsplash
+    </a>
 
-  <a href="builder.html" target="_blank" class="floating-button text-button" aria-label="Create new countdown" id="create-button">
-  <span>Create</span>
-  </a>
-  &nbsp;
-<div class="floating-button text-button" >
-  <span id="share-button">Share</span>
-</div>
-  &nbsp;
+    <a href="builder.html" target="_blank" class="attractive-button" aria-label="Create new countdown" id="create-button">
+        <span>Create</span>
+    </a>
+    &nbsp;
+    <button type="button" class="attractive-button" id="share-button">Share</button>
+    &nbsp;
 </div>
 
 <div class="countdown-container">
-  <div class="countdown-panel">
-    <div id="countdown-title" class="countdown-title"></div>
-    <div class="countdown-wrapper">
-    <div class="countdown" id="countdown">
-      <div class="days"></div>
-      <div class="time"></div>
+    <div class="countdown-panel">
+        <div id="countdown-title" class="countdown-title"></div>
+        <div class="countdown-wrapper">
+            <div class="countdown" id="countdown">
+                <div class="days"></div>
+                <div class="time"></div>
+            </div>
+        </div>
+        <div id="countdown-suffix" class="countdown-suffix"></div>
     </div>
-    </div>
-    <div id="countdown-suffix" class="countdown-suffix"></div>
-  </div>
 
 </div>
 

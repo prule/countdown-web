@@ -11,30 +11,38 @@
 
 
 .countdown {
-  /*font-family: "Orbitron", sans-serif;*/
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
   -webkit-background-clip: text;
   background-clip: text;
-  /*color: transparent;*/
-  /* Remove fixed font size to allow JS to control it */
-  /*white-space: nowrap; !* Prevent text from wrapping *!*/
-  display: inline-block;
-  line-height: 1; /* Important for accurate sizing */
+  line-height: 1.2;
+
+  /* --- Responsive Font Sizing using VW and Clamp --- */
+  /* This makes the font size scale with the viewport width, */
+  /* but prevents it from becoming too small or too large. */
+  /* clamp(MINIMUM_SIZE, PREFERRED_SIZE, MAXIMUM_SIZE) */
+  font-size: clamp(2.5rem, 12vw, 9rem);
+
+  /* Use flexbox to layout the 'days' and 'time' components */
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  justify-content: center;
+  gap: 0.25em; /* Adds a small space between 'days' and 'time' */
 }
 .countdown-wrapper {
  margin: 1em;
 }
 .countdown-title {
   font-size: 1.5em;
-  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
   color: #999;
 }
 
 .countdown-suffix {
   font-size: 1.5em;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #999;
 }
 
@@ -67,20 +75,6 @@ body {
   height: 100vh;
 }
 
-/*!* For more precise control over font sizing *!*/
-/*@media screen and (max-width: 768px) {*/
-/*  .orbitron-countdown {*/
-/*    font-size: 8vw;*/
-/*  }*/
-/*}*/
-
-/*@media screen and (max-width: 480px) {*/
-/*  .orbitron-countdown {*/
-/*    font-size: 6vw;*/
-/*  }*/
-/*}*/
-
-
 .countdown-panel {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 2em 3em;
@@ -102,69 +96,34 @@ body {
   box-sizing: border-box;
 }
 
-
-.floating-button {
-  /*position: fixed;*/
-  /*top: 20px;*/
-  /*right: 20px;*/
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  /*width: 60px;*/
-  /*height: 60px;*/
-  font-size: 24px;
-  cursor: pointer;
-  /*display: flex;*/
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  z-index: 1000;
-  text-decoration: none;
-}
-
-.floating-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: scale(1.05);
-}
-
-.floating-button span {
-  font-family: "Orbitron", sans-serif;
-}
-
-/* Optional tooltip */
-.floating-button .tooltip {
-  position: absolute;
-  right: 70px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.floating-button:hover .tooltip {
-  opacity: 1;
-}
-
-.floating-button.text-button {
-  border-radius: 30px;
-  width: auto;
-  padding: 0 20px;
-}
-
-.floating-button.text-button span {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-
 #unsplash-credit {
   margin-right: auto;
   /*display: none;*/
+}
+
+.attractive-button {
+  /* Sizing and Text Styling */
+  display: inline-block;
+  font-weight: normal;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  border: none; /* Reset border for <button> elements */
+
+  /* Responsive Sizing using clamp() */
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+  padding: clamp(0.5em, 0.7vw, 1em) clamp(1em, 1vw, 1.5em);
+
+  /* Appearance */
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.attractive-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
 }
