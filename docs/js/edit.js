@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  createEditBanner();
+
   console.log('Countdown Edit Mode Activated.');
 
   const titleElement = document.getElementById('countdown-title');
@@ -83,6 +85,32 @@ function makeEditable(element, paramName, modalTitle, labelText) {
     } else {
       showEditModal(paramName, modalTitle, labelText, currentValue);
     }
+  });
+}
+
+/**
+ * Creates and prepends an "Edit Mode" banner to the top of the page.
+ */
+function createEditBanner() {
+  const banner = document.createElement('div');
+  banner.id = 'edit-mode-banner';
+  banner.innerHTML = `
+    <span>You are in Edit Mode. Click an element with a dashed outline to change it.</span>
+    <button type="button" class="close-banner-btn" aria-label="Close">&times;</button>
+  `;
+  document.body.prepend(banner);
+  document.body.classList.add('edit-mode-active');
+
+  // Set a CSS variable with the banner's height to adjust the fixed menu
+  const bannerHeight = banner.offsetHeight;
+  document.documentElement.style.setProperty('--edit-banner-height', `${bannerHeight}px`);
+
+  // Add event listener to close button
+  banner.querySelector('.close-banner-btn').addEventListener('click', () => {
+    banner.style.display = 'none';
+    document.body.classList.remove('edit-mode-active');
+    // Reset the CSS variable so the menu returns to its original position
+    document.documentElement.style.setProperty('--edit-banner-height', '0px');
   });
 }
 
