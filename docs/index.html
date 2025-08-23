@@ -337,7 +337,7 @@
   <div class="hero-content">
     <h1>Countdown</h1>
     <p>Create beautiful, customizable countdown timers for any special moment. Choose from stunning backgrounds and elegant fonts to make every second count.</p>
-    <a href="builder.html" class="cta-button">
+    <a href="countdown.html?title=New%20Years&date=2026-01-01T00:00&image=matrix&font=lcd14&effect=gradient&edit=true" class="cta-button">
       <span>✨</span>
       Start Creating
     </a>
@@ -388,7 +388,7 @@
     <div class="final-cta">
       <h2>Ready to Create?</h2>
 <!--      <p>Join thousands who trust Countdown for their most important moments</p>-->
-      <a href="builder.html" class="cta-button">
+      <a href="countdown.html?title=New%20Years&date=2026-01-01T00:00&image=matrix&font=lcd14&effect=gradient&edit=true" class="cta-button">
         <span>🚀</span>
         Get Started Now
       </a>
@@ -433,6 +433,7 @@
   });
 
   const url = "countdown.html?title=New%20Years&date="+(new Date().getFullYear()+1)+"-01-01T00:00&image=matrix&font=lcd14&effect=gradient&preview=true"
+  const createUrl = "countdown.html?title=New%20Years&date="+(new Date().getFullYear()+1)+"-01-01T00:00&image=matrix&font=lcd14&effect=gradient&edit=true"
   const preview = document.getElementById('preview');
   preview.setAttribute('data', url);
 </script>
