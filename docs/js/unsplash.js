@@ -5,20 +5,41 @@ const supabaseClient = supabase.createClient(
 
 async function doGet(page, query) {
     try {
-        const {data, error} = await supabaseClient.functions.invoke('unsplash-proxy', {
+        const { data, error } = await supabaseClient.functions.invoke('unsplash-proxy', {
             body: JSON.stringify({
                 endpoint: 'search/photos',
                 query: query,
                 page: page,
-                per_page: 10
+                per_page: 12 // A good number for a grid layout
             })
         })
 
         if (error) throw error
 
-        console.log('unsplash response', data)
+        // The response from the edge function might be a string, so parse it.
+        const responseData = typeof data === 'string' ? JSON.parse(data) : data;
+        return responseData.results || []; // Return the array of photos
+
     } catch (err) {
-        console.error('Error fetching curated photos:', err)
-        throw err
+        console.error('Error fetching photos from Unsplash proxy:', err)
+        return []; // Return an empty array on error to prevent crashes
+    }
+}
+
+async function getPhotoDetails(photoId) {
+    try {
+        const { data, error } = await supabaseClient.functions.invoke('unsplash-proxy', {
+            body: JSON.stringify({
+                endpoint: `photos/${photoId}`
+            })
+        });
+
+        if (error) throw error;
+
+        return typeof data === 'string' ? JSON.parse(data) : data;
+
+    } catch (err) {
+        console.error(`Error fetching details for photo ${photoId}:`, err);
+        return null; // Return null on error
     }
 }

@@ -16,3 +16,35 @@
   /* Change cursor to indicate it's an interactive element */
   cursor: pointer;
 }
+
+/* Unsplash Search Modal Styles */
+.unsplash-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  min-height: 200px; /* Ensure it has some height even when empty */
+}
+
+.unsplash-thumbnail {
+  width: 100%;
+  padding-top: 60%; /* Creates an aspect ratio, e.g., 100/60 = 5:3 */
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.unsplash-thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+  border-color: rgba(0, 170, 255, 0.7);
+}
+
+.unsplash-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}

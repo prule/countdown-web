@@ -42,6 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const titleElement = document.getElementById('countdown-title');
   const dateElement = document.getElementById('countdown-suffix');
   const timezoneElement = document.getElementById('countdown-timezone');
+  const panelElement = document.querySelector('.countdown-panel');
+
+  if (panelElement) {
+    makeEditable(panelElement, 'background', 'Edit Background', 'Search for an image on Unsplash:');
+  }
 
   if (titleElement) {
     makeEditable(titleElement, 'title', 'Edit Title', 'Enter a new title:');
@@ -71,7 +76,9 @@ function makeEditable(element, paramName, modalTitle, labelText) {
     event.stopPropagation();
 
     const currentValue = element.textContent.trim();
-    if (paramName === 'timezone') {
+    if (paramName === 'background') {
+      showUnsplashModal(modalTitle, labelText);
+    } else if (paramName === 'timezone') {
       showTimezoneModal(modalTitle, labelText);
     } else {
       showEditModal(paramName, modalTitle, labelText, currentValue);
@@ -189,11 +196,11 @@ function showEditModal(paramName, modalTitle, labelText, currentValue) {
  * @param {string} labelText The text for the input field's label.
  */
 function showTimezoneModal(modalTitle, labelText) {
-  // Assumes `timezones` variable is available from `timezones.js`
-    const timezones = Intl.supportedValuesOf('timeZone')
+  // Use the browser's built-in list of timezones for accuracy and simplicity.
+  const timezones = Intl.supportedValuesOf('timeZone');
 
-  if (typeof timezones === 'undefined') {
-    console.error('Timezones data is not available. Make sure timezones.js is loaded.');
+  if (!timezones || timezones.length === 0) {
+    console.error('Could not retrieve timezones from the browser.');
     return;
   }
 
@@ -278,5 +285,125 @@ function showTimezoneModal(modalTitle, labelText) {
   modalElement.addEventListener('hidden.bs.modal', () => modalElement.remove());
 
   populateTimezoneList();
+  modal.show();
+}
+
+/**
+ * Creates and shows a Bootstrap modal for searching Unsplash.
+ * @param {string} modalTitle The title for the modal window.
+ * @param {string} labelText The text for the input field's label.
+ */
+function showUnsplashModal(modalTitle, labelText) {
+  const existingModal = document.getElementById('edit-modal');
+  if (existingModal) existingModal.remove();
+
+  let currentPage = 1;
+  let currentQuery = '';
+  let isLoading = false;
+
+  const modalHtml = `
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content text-bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="edit-modal-label">${modalTitle}</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>${labelText}</p>
+            <div class="input-group mb-3">
+              <input id="unsplash-search-input" type="text" class="form-control bg-dark text-white" placeholder="e.g., space, beach, fireworks">
+              <button class="btn btn-primary" type="button" id="unsplash-search-btn">Search</button>
+            </div>
+            <div id="unsplash-results" class="unsplash-results-grid">
+              <!-- Search results will be populated here -->
+            </div>
+            <div class="unsplash-loader-container">
+              <button class="btn btn-outline-light" id="load-more-btn" style="display: none;">Load More</button>
+              <div id="unsplash-loader" class="spinner-border text-light" role="status" style="display: none;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('edit-modal-placeholder').innerHTML = modalHtml;
+  const modalElement = document.getElementById('edit-modal');
+  const modal = new bootstrap.Modal(modalElement);
+  const searchInput = document.getElementById('unsplash-search-input');
+  const searchButton = document.getElementById('unsplash-search-btn');
+  const resultsContainer = document.getElementById('unsplash-results');
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loader = document.getElementById('unsplash-loader');
+
+  const performSearch = async (isNewSearch = true) => {
+    if (isLoading) return;
+
+    if (isNewSearch) {
+      const query = searchInput.value.trim();
+      if (!query) return;
+      currentPage = 1;
+      currentQuery = query;
+      resultsContainer.innerHTML = '';
+    } else {
+      currentPage++;
+    }
+
+    isLoading = true;
+    loader.style.display = 'inline-block';
+    loadMoreBtn.style.display = 'none';
+    searchButton.disabled = true;
+
+    try {
+      const photos = await doGet(currentPage, currentQuery); // From unsplash.js
+
+      if (photos && photos.length > 0) {
+        photos.forEach(photo => {
+          const imgContainer = document.createElement('div');
+          imgContainer.className = 'unsplash-thumbnail';
+          imgContainer.style.backgroundImage = `url(${photo.urls.thumb})`;
+          imgContainer.setAttribute('aria-label', photo.alt_description || 'Unsplash image');
+          imgContainer.addEventListener('click', () => {
+            const url = new URL(window.location.href);
+            url.searchParams.set('unsplash', photo.id);
+            url.searchParams.delete('image'); // Remove local image param if it exists
+            window.location.href = url.toString();
+          });
+          resultsContainer.appendChild(imgContainer);
+        });
+        // Show 'Load More' button only if we got a full page of results (12 is the per_page value)
+        loadMoreBtn.style.display = photos.length < 12 ? 'none' : 'block';
+      } else {
+        loadMoreBtn.style.display = 'none';
+        if (currentPage === 1) {
+          resultsContainer.innerHTML = '<p class="text-muted text-center w-100">No results found.</p>';
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+      if (currentPage === 1) {
+        resultsContainer.innerHTML = '<p class="text-danger text-center w-100">Could not fetch photos. Please try again later.</p>';
+      }
+    } finally {
+      isLoading = false;
+      loader.style.display = 'none';
+      searchButton.disabled = false;
+    }
+  };
+
+  searchButton.addEventListener('click', () => performSearch(true));
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      performSearch(true);
+    }
+  });
+  loadMoreBtn.addEventListener('click', () => performSearch(false));
+
+  modalElement.addEventListener('hidden.bs.modal', () => modalElement.remove());
+
   modal.show();
 }

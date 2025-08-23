@@ -67,7 +67,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('../img/clock.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -120,7 +119,7 @@ body {
 .attractive-button {
   /* Sizing and Text Styling */
   display: inline-block;
-  font-weight: normal;
+  font-weight: bold;
   color: white;
   text-decoration: none;
   text-align: center;

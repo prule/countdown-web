@@ -114,9 +114,52 @@ function updateCountdown(targetDate, font, elementId = 'countdown') {
 }
 
 /**
+ * Fetches photo details from the Unsplash API and updates the page.
+ * @param {string} photoId The ID of the Unsplash photo.
+ */
+async function loadUnsplashImage(photoId) {
+  // Use source.unsplash.com for a fast-loading fallback from the photo ID.
+  document.body.style.backgroundImage = `url(https://source.unsplash.com/${photoId}/1920x1080)`;
+  const unsplashCredit = document.getElementById('unsplash-credit');
+  if (unsplashCredit) {
+    // Make the button visible and set a fallback link and text immediately.
+    unsplashCredit.style.display = 'inline-block';
+    unsplashCredit.href = `https://unsplash.com/photos/${photoId}?utm_source=my_countdown_app&utm_medium=referral`;
+    unsplashCredit.textContent = 'Photo on Unsplash';
+  }
+
+  try {
+    // getPhotoDetails is defined in unsplash.js and uses the Supabase proxy
+    const data = await getPhotoDetails(photoId);
+
+    if (!data) {
+      // Error is already logged in getPhotoDetails, so we just exit.
+      return;
+    }
+
+    // Set the background image to the full-resolution version
+    document.body.style.backgroundImage = `url(${data.urls.full})`;
+
+    // Update the attribution button
+    if (unsplashCredit) {
+      // Per Unsplash guidelines, link to the photographer's profile with UTM parameters
+      const photographerUrl = new URL(data.user.links.html);
+      photographerUrl.searchParams.append('utm_source', 'my_countdown_app');
+      photographerUrl.searchParams.append('utm_medium', 'referral');
+
+      unsplashCredit.href = photographerUrl.toString();
+      unsplashCredit.textContent = `Photo by ${data.user.name}`;
+    }
+  } catch (error) {
+    console.error('Failed to process Unsplash image details:', error);
+    // The fallback image from source.unsplash.com is already loading, so the user still sees a background.
+  }
+}
+
+/**
  * Initializes the countdown with a date from query parameter or default
  */
-function initCountdownFromQuery() {
+async function initCountdownFromQuery() {
 
   const countdownElement = document.getElementById("countdown");
   if (!countdownElement) return;
@@ -130,12 +173,7 @@ function initCountdownFromQuery() {
   document.title = title;
 
   if (unsplash) {
-    document.body.style.backgroundImage = `url(https://images.unsplash.com/${unsplash})`;
-    const unsplashCredit = document.getElementById('unsplash-credit');
-    if (unsplashCredit) {
-      // Make the button visible since an Unsplash image is being used.
-      unsplashCredit.style.display = 'inline-block';
-    }
+    await loadUnsplashImage(unsplash);
   } else if (image) {
     document.body.style.backgroundImage = `url(./img/${image}.jpg)`;
   }
