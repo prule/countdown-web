@@ -59,6 +59,11 @@
   font-size: clamp(0.8rem, 3vw, 1.2rem);
 }
 
+.countdown-timezone {
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  margin-top: 0.5em;
+}
+
 body {
   margin: 0;
   padding: 0;

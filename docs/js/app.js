@@ -151,7 +151,24 @@ function initCountdownFromQuery() {
 
   const countdownSuffixElement = document.getElementById('countdown-suffix');
   if (countdownSuffixElement) {
-    countdownSuffixElement.textContent = targetDate.replace('T', ' ');
+    // Regex to find a timezone offset (e.g., +05:00, -0800, Z)
+    const tzOffsetRegex = /([Zz]|([+-])(\d{2}):?(\d{2})?)$/;
+    const match = targetDate.match(tzOffsetRegex);
+    let displayDate = targetDate;
+    let displayTimezone = "Viewer's Local Time";
+
+    if (match) {
+      // If there's a timezone, strip it for display and format it.
+      displayDate = targetDate.substring(0, match.index);
+      const offset = match[0].toUpperCase() === 'Z' ? 'UTC' : `UTC${match[0]}`;
+      displayTimezone = `Timezone: ${offset}`;
+    }
+
+    // Display the date part, replacing 'T' with a space for readability
+    countdownSuffixElement.textContent = displayDate.replace('T', ' ');
+
+    const timezoneElement = document.getElementById('countdown-timezone');
+    if (timezoneElement) timezoneElement.textContent = displayTimezone;
   }
 }
 

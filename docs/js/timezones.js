@@ -65,22 +65,9 @@ function doFilter() {
     }
     return null;
   })
-    //.filter(option => !!option)
-
-  //   .sort((a, b) => {
-  //   if (a.dataset.offset < b.dataset.offset) {
-  //     return -1;
-  //   }
-  //   if (a.dataset.offset > b.dataset.offset) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // });
 
   zones.forEach((option, idx) => {
-    // if (option && idx < 5) {
       timezoneSelect.appendChild(option);
-    // }
   })
 
   // add onclick to each option in timezoneSelect
