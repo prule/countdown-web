@@ -26,12 +26,15 @@
 
   /* Use flexbox to layout the 'days' and 'time' components */
   display: flex;
-  flex-wrap: nowrap; /* Prevents items from wrapping */
+  flex-direction: column; /* This is the key change to stack items vertically */
   justify-content: center;
+  align-items: center; /* This ensures the items are centered horizontally */
   gap: 0.25em; /* Adds a small space between 'days' and 'time' */
 }
 .countdown-wrapper {
- margin: 1em;
+ /* The parent .countdown-panel already provides padding. */
+ /* Removing this margin gives the text more space to prevent wrapping too early. */
+ margin: 0;
 }
 .countdown-title {
   font-size: 1.5em;
@@ -77,10 +80,12 @@ body {
 
 .countdown-panel {
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 2em 3em;
+  /* Use responsive padding. clamp(MIN, PREFERRED, MAX) */
+  padding: clamp(1.5em, 4vw, 2em) clamp(1em, 5vw, 3em);
   border-radius: 15px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-
+  max-width: 95%; /* Ensure the panel doesn't touch the screen edges */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .button-menu {
