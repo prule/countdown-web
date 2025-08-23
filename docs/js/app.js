@@ -141,7 +141,7 @@ function initCountdownFromQuery() {
   countdownTitleElement.textContent = title;
 
   const countdownSuffixElement = document.getElementById("countdown-suffix");
-  countdownSuffixElement.textContent = targetDate;
+  countdownSuffixElement.textContent = targetDate.replace('T', ' ');
 }
 
 // Initialize the countdown when the DOM is loaded
