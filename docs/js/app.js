@@ -137,18 +137,27 @@ function initCountdownFromQuery() {
   // Start the countdown
   updateCountdown(targetDate, font);
 
-  const countdownTitleElement = document.getElementById("countdown-title");
-  countdownTitleElement.textContent = title;
+  const countdownTitleElement = document.getElementById('countdown-title');
+  if (countdownTitleElement) {
+    countdownTitleElement.textContent = title;
+    // Add the shared text block class
+    countdownTitleElement.classList.add('countdown-text-block');
+  }
 
-  const countdownSuffixElement = document.getElementById("countdown-suffix");
-  countdownSuffixElement.textContent = targetDate.replace('T', ' ');
+  const countdownSuffixElement = document.getElementById('countdown-suffix');
+  if (countdownSuffixElement) {
+    countdownSuffixElement.textContent = targetDate.replace('T', ' ');
+  }
 }
 
 // Initialize the countdown when the DOM is loaded
 document.addEventListener('DOMContentLoaded', initCountdownFromQuery);
 
 if (new URLSearchParams(window.location.search).get('preview') === 'true') {
-  document.getElementById('button-menu').style.display = 'none';
+  const buttonMenu = document.getElementById('button-menu');
+  if (buttonMenu) {
+    buttonMenu.style.display = 'none';
+  }
 }
 
 function log(x) {
@@ -158,7 +167,8 @@ function log(x) {
 }
 
 const btn = document.getElementById('share-button');
-
-btn.addEventListener("click", async () => {
-  window.open("./share.html?link=" + encodeURIComponent(window.location.href), '_blank');
-});
+if (btn) {
+  btn.addEventListener("click", async () => {
+    window.open("./share.html?link=" + encodeURIComponent(window.location.href), '_blank');
+  });
+}

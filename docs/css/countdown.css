@@ -36,10 +36,10 @@
  /* Removing this margin gives the text more space to prevent wrapping too early. */
  margin: 0;
 }
-.countdown-title {
+
+/* Create a common class for title and suffix styles */
+.countdown-text-block {
   /* Use clamp() for responsive font size with min/max limits */
-  font-size: clamp(1rem, 4vw, 2.2rem);
-  font-weight: bold;
   font-family: "Poppins", sans-serif;
   color: #999;
   display: flex;
@@ -49,16 +49,14 @@
   overflow-wrap: break-word;
 }
 
+.countdown-title {
+  font-size: clamp(1rem, 4vw, 2.2rem);
+  font-weight: bold;
+}
+
 .countdown-suffix {
   /* Use clamp() for responsive font size with min/max limits */
   font-size: clamp(0.8rem, 3vw, 1.2rem);
-  font-family: "Poppins", sans-serif;
-  color: #999;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* Allow the long date string to break onto a new line if needed */
-  overflow-wrap: break-word;
 }
 
 body {
@@ -105,6 +103,7 @@ body {
   right: 0;
   left: 0;
   padding: 0 1.5em;
+  gap: 0.5em; /* Use gap for spacing instead of &nbsp; */
   box-sizing: border-box;
 }
 

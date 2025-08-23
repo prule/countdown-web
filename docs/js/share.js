@@ -9,16 +9,20 @@ const shareText = document.getElementById('link');
 shareText.value = link;
 
 function copyToClipboard() {
-  // Get the text field
-  let copyText = document.getElementById("link");
+  const copyText = document.getElementById("link");
+  const copyButton = document.querySelector('button[onclick="copyToClipboard()"]');
 
-  // Select the text field
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
+  if (!copyText || !copyButton) return;
 
-  // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-
-  // Alert the copied text
-  alert("Copied link to clipboard: " + copyText.value);
+  // Use the modern clipboard API
+  navigator.clipboard.writeText(copyText.value).then(() => {
+    // Provide non-blocking feedback
+    const originalText = copyButton.textContent;
+    copyButton.textContent = 'Copied!';
+    setTimeout(() => {
+      copyButton.textContent = originalText;
+    }, 2000); // Revert back after 2 seconds
+  }).catch(err => {
+    console.error('Failed to copy text: ', err);
+  });
 }
