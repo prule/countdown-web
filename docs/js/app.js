@@ -131,6 +131,11 @@ function initCountdownFromQuery() {
 
   if (unsplash) {
     document.body.style.backgroundImage = `url(https://images.unsplash.com/${unsplash})`;
+    const unsplashCredit = document.getElementById('unsplash-credit');
+    if (unsplashCredit) {
+      // Make the button visible since an Unsplash image is being used.
+      unsplashCredit.style.display = 'inline-block';
+    }
   } else if (image) {
     document.body.style.backgroundImage = `url(./img/${image}.jpg)`;
   }

@@ -109,7 +109,7 @@ body {
 
 #unsplash-credit {
   margin-right: auto;
-  /*display: none;*/
+  display: none;
 }
 
 .attractive-button {
@@ -124,7 +124,7 @@ body {
 
   /* Responsive Sizing using clamp() */
   font-size: clamp(0.8rem, 1.5vw, 1.1rem);
-  padding: clamp(0.4em, 1vw, 0.8em) clamp(0.8em, 2vw, 1.5em);
+  padding: clamp(0.4em, .5vw, 0.5em) clamp(0.8em, 1vw, 1.5em);
 
   /* Appearance */
   background-color: rgba(0, 0, 0, 0.6);
