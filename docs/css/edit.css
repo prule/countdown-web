@@ -1,0 +1,18 @@
+/* Styles for Edit Mode */
+
+.editable {
+  /* Add a subtle transition for a smoother hover effect */
+  transition: outline 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.editable:hover {
+  /* Use a dashed outline to indicate clickability without shifting layout */
+  outline: 2px dashed #00aaff;
+  outline-offset: 4px; /* Give it some space from the text */
+
+  /* Add a subtle glow for better visibility */
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+
+  /* Change cursor to indicate it's an interactive element */
+  cursor: pointer;
+}
