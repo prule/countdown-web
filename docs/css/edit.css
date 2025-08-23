@@ -76,6 +76,14 @@
   border-color: rgba(0, 170, 255, 0.7);
 }
 
+/* Styles for the Timezone List in the modal */
+#timezone-list {
+  height: 40vh; /* Use a fixed height to prevent the modal from resizing */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
+  border-radius: 0.375rem; /* Match Bootstrap's default border-radius */
+}
+
 .unsplash-loader-container {
   display: flex;
   justify-content: center;
