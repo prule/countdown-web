@@ -99,8 +99,15 @@ function updateCountdown(targetDate, font, elementId = 'countdown') {
   const formattedTime = formatTimeRemaining(timeRemaining, true);
 
   // Update the element
-  countdownElement.getElementsByClassName('days')[0].textContent = formattedTime.days;
-  countdownElement.getElementsByClassName('time')[0].textContent = formattedTime.time;
+  const daysElement = countdownElement.querySelector('.days');
+  const timeElement = countdownElement.querySelector('.time');
+
+  if (daysElement) {
+    daysElement.textContent = formattedTime.days;
+  }
+  if (timeElement) {
+    timeElement.textContent = formattedTime.time;
+  }
 
   // Continue updating
   setTimeout(() => updateCountdown(targetDate, font, elementId), 1000);

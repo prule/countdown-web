@@ -26,7 +26,7 @@
 
   /* Use flexbox to layout the 'days' and 'time' components */
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  flex-wrap: nowrap; /* Prevents items from wrapping */
   justify-content: center;
   gap: 0.25em; /* Adds a small space between 'days' and 'time' */
 }
