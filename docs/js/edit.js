@@ -3,9 +3,37 @@
  * It only activates if the 'edit=true' URL parameter is present.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if we are in edit mode. If not, do nothing.
   const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('edit') !== 'true') {
+  const isEditMode = urlParams.get('edit') === 'true';
+  const createButton = document.getElementById('create-button');
+
+  if (createButton) {
+    // Repurpose the 'Create' button to be an 'Edit'/'View Mode' toggle.
+    createButton.href = '#'; // Prevent navigation to builder.html
+    createButton.removeAttribute('target');
+
+    if (isEditMode) {
+      createButton.textContent = 'View Mode';
+      createButton.setAttribute('aria-label', 'Exit edit mode');
+    } else {
+      createButton.textContent = 'Edit';
+      createButton.setAttribute('aria-label', 'Enter edit mode');
+    }
+
+    createButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentUrl = new URL(window.location.href);
+      if (isEditMode) {
+        currentUrl.searchParams.delete('edit');
+      } else {
+        currentUrl.searchParams.set('edit', 'true');
+      }
+      window.location.href = currentUrl.toString();
+    });
+  }
+
+  // If we are not in edit mode, we don't need to set up the editable fields.
+  if (!isEditMode) {
     return;
   }
 

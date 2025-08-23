@@ -188,9 +188,27 @@ function log(x) {
   }
 }
 
-const btn = document.getElementById('share-button');
-if (btn) {
-  btn.addEventListener("click", async () => {
-    window.open("./share.html?link=" + encodeURIComponent(window.location.href), '_blank');
+const shareButton = document.getElementById('share-button');
+if (shareButton) {
+  shareButton.addEventListener('click', () => {
+    // Create a URL object to easily manipulate search parameters
+    const url = new URL(window.location.href);
+
+    // Remove the 'edit' parameter to create a clean, shareable link
+    url.searchParams.delete('edit');
+
+    const shareableLink = url.toString();
+
+    // Use the modern clipboard API to copy the link
+    navigator.clipboard.writeText(shareableLink).then(() => {
+      // Provide non-blocking feedback to the user
+      const originalText = shareButton.textContent;
+      shareButton.textContent = 'Copied!';
+      setTimeout(() => {
+        shareButton.textContent = originalText;
+      }, 2000); // Revert back after 2 seconds
+    }).catch(err => {
+      console.error('Failed to copy link: ', err);
+    });
   });
 }
