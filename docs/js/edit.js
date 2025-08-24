@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dateElement = document.getElementById('countdown-suffix');
   const timezoneElement = document.getElementById('countdown-timezone');
   const panelElement = document.querySelector('.countdown-panel');
+  const countdownElement = document.getElementById('countdown');
 
   if (panelElement) {
     makeEditable(panelElement, 'background', 'Edit Background', 'Search for an image on Unsplash:');
@@ -60,6 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (timezoneElement) {
     makeEditable(timezoneElement, 'timezone', 'Select Timezone', 'Select a timezone from the list:');
+  }
+
+  if (countdownElement) {
+    makeEditable(countdownElement, 'display', 'Edit Display', 'Choose a font and effect:');
   }
 });
 
@@ -82,6 +87,8 @@ function makeEditable(element, paramName, modalTitle, labelText) {
       showUnsplashModal(modalTitle, labelText);
     } else if (paramName === 'timezone') {
       showTimezoneModal(modalTitle, labelText);
+    } else if (paramName === 'display') {
+      showDisplayModal(modalTitle, labelText);
     } else {
       showEditModal(paramName, modalTitle, labelText, currentValue);
     }
@@ -211,6 +218,95 @@ function showEditModal(paramName, modalTitle, labelText, currentValue) {
   });
 
   // Clean up the modal from the DOM after it's hidden to keep things tidy
+  modalElement.addEventListener('hidden.bs.modal', () => {
+    modalElement.remove();
+  });
+
+  modal.show();
+}
+
+/**
+ * Creates and shows a Bootstrap modal for editing the font and effect.
+ * @param {string} modalTitle The title for the modal window.
+ * @param {string} labelText The text for the input field's label.
+ */
+function showDisplayModal(modalTitle, labelText) {
+  const existingModal = document.getElementById('edit-modal');
+  if (existingModal) existingModal.remove();
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentFont = urlParams.get('font') || 'lcd14';
+  const currentEffect = urlParams.get('effect') || 'gradient';
+
+  const modalHtml = `
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="edit-modal-label">${modalTitle}</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>${labelText}</p>
+            <form id="edit-form" novalidate>
+              <div class="mb-3">
+                <label for="font-select" class="form-label">Font</label>
+                <select id="font-select" class="form-select">
+                  <option value="lcd14">LCD</option>
+                  <option value="vt323">VT323</option>
+                  <option value="poppins">Poppins</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="effect-select" class="form-label">Effect</label>
+                <select id="effect-select" class="form-select">
+                  <option value="gradient">Gradient</option>
+                  <option value="neon-pulse">Neon Pulse</option>
+                  <option value="matrix">Matrix</option>
+                  <option value="fire">Fire</option>
+                  <option value="hologram">Hologram</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="save-changes-btn">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('edit-modal-placeholder').innerHTML = modalHtml;
+  const modalElement = document.getElementById('edit-modal');
+  const modal = new bootstrap.Modal(modalElement);
+
+  const fontSelect = document.getElementById('font-select');
+  const effectSelect = document.getElementById('effect-select');
+  fontSelect.value = currentFont;
+  effectSelect.value = currentEffect;
+
+  const saveChanges = () => {
+    const newFont = fontSelect.value;
+    const newEffect = effectSelect.value;
+
+    if (newFont !== currentFont || newEffect !== currentEffect) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('font', newFont);
+      url.searchParams.set('effect', newEffect);
+      window.location.href = url.toString();
+    } else {
+      modal.hide();
+    }
+  };
+
+  document.getElementById('save-changes-btn').addEventListener('click', saveChanges);
+  document.getElementById('edit-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    saveChanges();
+  });
+
   modalElement.addEventListener('hidden.bs.modal', () => {
     modalElement.remove();
   });
