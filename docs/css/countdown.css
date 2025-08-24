@@ -1,15 +1,3 @@
-/* Original Gradient Style */
-.countdown-gradient {
-  background: linear-gradient(to right, #00ffff, #ff00ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  display: flex;
-  line-height: 1;
-}
-
-
 .countdown {
   font-optical-sizing: auto;
   font-weight: normal;
@@ -35,6 +23,7 @@
  /* The parent .countdown-panel already provides padding. */
  /* Removing this margin gives the text more space to prevent wrapping too early. */
  margin: 0;
+  text-align: center;
 }
 
 /* Create a common class for title and suffix styles */
