@@ -176,9 +176,6 @@ async function initCountdownFromQuery() {
 
   log(targetDate, title);
 
-  // set document title
-  document.title = title;
-
   if (unsplash) {
     await loadUnsplashImage(unsplash);
   } else if (image) {

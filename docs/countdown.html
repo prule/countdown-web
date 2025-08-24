@@ -18,6 +18,26 @@
     <title>My Countdown To - Create Custom Countdown Timers</title>
     <meta name="description" content="Create and share custom countdown timers for any event or deadline. Easy to use and mobile-friendly.">
 
+    <script>
+      /**
+       * This inline script runs immediately to set the page title and text-based
+       * meta tags from URL parameters. This helps some tools and browser tabs
+       * display the correct information as early as possible.
+       * Note: Most social media crawlers do not execute JavaScript, so this
+       * will not affect their previews. Server-side rendering is required for that.
+       */
+      const inlineParams = new URLSearchParams(window.location.search);
+      const inlineTitle = inlineParams.get('title') || 'My Countdown To';
+      const inlineDescription = `Countdown to ${inlineTitle}. Create your own at mycountdownto.com.`;
+
+      document.title = inlineTitle;
+      document.querySelector('meta[name="description"]')?.setAttribute('content', inlineDescription);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', inlineTitle);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', inlineTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', inlineDescription);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', inlineDescription);
+    </script>
+
     <link rel="stylesheet" href="css/style.css?v=1755995386535">
     <link rel="stylesheet" href="css/countdown.css?v=1755995386535">
     <link rel="stylesheet" href="css/fonts.css?v=1755995386535">
@@ -26,15 +46,15 @@
     <!-- Add Bootstrap CSS for the modal dialogs -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
-    <meta property="og:title" content="The Countdown To">
-    <meta property="og:description" content="Build your own countdown clock">
+    <meta property="og:title" content="My Countdown To">
+    <meta property="og:description" content="Create and share custom countdown timers for any event or deadline.">
     <meta property="og:url" content="https://www.mycountdownto.com/">
-    <meta property="og:image" content="/img/clock.jpg">
-    <meta property="og:site_name" content="The Countdown To">
+    <meta property="og:image" content="https://www.mycountdownto.com/img/clock.jpg">
+    <meta property="og:site_name" content="My Countdown To">
 
-    <meta name="twitter:title" content="The Countdown To">
-    <meta name="twitter:description" content="Build your own countdown clock">
-    <meta name="twitter:image" content="/img/clock.jpg">
+    <meta name="twitter:title" content="My Countdown To">
+    <meta name="twitter:description" content="Create and share custom countdown timers for any event or deadline.">
+    <meta name="twitter:image" content="https://www.mycountdownto.com/img/clock.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" href="favicon.ico" sizes="any">
