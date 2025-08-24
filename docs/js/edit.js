@@ -253,6 +253,10 @@ function showDisplayModal(modalTitle, labelText) {
                 <label for="font-select" class="form-label">Font</label>
                 <select id="font-select" class="form-select">
                   <option value="lcd14">LCD</option>
+                  <option value="jetbrains-mono">JetBrains Mono</option>
+                  <option value="roboto-mono">Roboto Mono</option>
+                  <option value="source-code-pro">Source Code Pro</option>
+                  <option value="space-mono">Space Mono</option>
                   <option value="vt323">VT323</option>
                   <option value="poppins">Poppins</option>
                 </select>

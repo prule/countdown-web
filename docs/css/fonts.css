@@ -39,6 +39,26 @@
   letter-spacing: 0.02em;
 }
 
+.countdown-font-roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
+.countdown-font-source-code-pro {
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 0.01em;
+}
+
+.countdown-font-jetbrains-mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0;
+}
+
+.countdown-font-space-mono {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.01em;
+}
+
 /* Sci-Fi Hologram Style */
 .countdown-effect-hologram {
   color: rgba(157, 236, 249, 0.9);
@@ -126,6 +146,3 @@
   background-clip: text;
   color: transparent;
 }
-
-
-

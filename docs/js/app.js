@@ -140,6 +140,13 @@ async function loadUnsplashImage(photoId) {
     // Set the background image to the full-resolution version
     document.body.style.backgroundImage = `url(${data.urls.full})`;
 
+    // Update Open Graph and Twitter card images for better social sharing previews
+    const socialImageUrl = data.urls.regular; // A good size for social media cards
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', socialImageUrl);
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', socialImageUrl);
+
     // Update the attribution button
     if (unsplashCredit) {
       // Per Unsplash guidelines, link to the photographer's profile with UTM parameters
